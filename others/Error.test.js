@@ -51,7 +51,7 @@ test("should render error with detail", () => {
     render(<Error error={error} />);
   });
   let errorMessage = document.querySelector(".error h3");
-  let errorDetail = document.querySelectorAll(".error p");
+  let errorDetail = document.querySelector(".error p");
   expect(errorMessage).not.toBeNull();
   expect(errorMessage.textContent).toEqual(error.message);
   expect(errorDetail).not.toBeNull();
