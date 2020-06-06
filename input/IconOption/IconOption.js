@@ -15,8 +15,14 @@ import "./IconOption.css";
 export default function IconOption(props) {
   return (
     <div className="icon-option">
-      <input type="radio" name={props.selectName} id={props.optionName} />
-      <label htmlFor={props.optionName}>
+      <input
+        type="radio"
+        name={props.selectName}
+        id={props.optionName}
+        data-testid={`${props.testid}-radio`}
+        onChange={props.onChange}
+      />
+      <label htmlFor={props.optionName} data-testid={props.testid}>
         <span className="icon">
           <FontAwesomeIcon icon={props.icon} />
         </span>

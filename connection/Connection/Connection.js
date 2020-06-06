@@ -7,8 +7,8 @@ import Card from "../../card/Card/Card";
 export default function Connection(props) {
   return (
     <div className="connection">
-      <Card kind={props.card1.kind} text={props.card1.text} />
-      <Card kind={props.card2.kind} text={props.card2.text} />
+      <Card card={props.connection.card1} small={props.small} />
+      <Card card={props.connection.card2} small={props.small} />
     </div>
   );
 }

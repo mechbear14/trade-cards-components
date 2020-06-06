@@ -2,9 +2,20 @@ import React from "react";
 
 import "./LabelledInput.css";
 
+/**
+ * Props:
+ * value: Value in the input element
+ * labelText: text content for label
+ * type: input type
+ * propName: name for referencing properties in state objects
+ * onChange: function to fire when value changes
+ */
+
 export default function LabelledInput(props) {
   let labelClass =
-    props.value.length && props.value.length > 0 ? "filled" : "empty";
+    props.value && props.value.length && props.value.length > 0
+      ? "filled"
+      : "empty";
   let barClass = "top-bar";
   let onFocus = () => {
     barClass = "top-bar typing";
@@ -24,10 +35,10 @@ export default function LabelledInput(props) {
         onChange={props.onChange}
         onFocus={onFocus}
         onBlur={onBlur}
-        data-test="input"
+        data-testid="input"
       />
       <div className="bottom-bar"></div>
-      <div className={barClass} data-test="bar"></div>
+      <div className={barClass} data-testid="bar"></div>
     </div>
   );
 }
