@@ -25,7 +25,11 @@ export default function LabelledInput(props) {
   };
   return (
     <div className="input">
-      <label htmlFor="name" className={labelClass} data-test="label">
+      <label
+        htmlFor={props.propName}
+        className={labelClass}
+        data-testid="label"
+      >
         {props.labelText}
       </label>
       <input

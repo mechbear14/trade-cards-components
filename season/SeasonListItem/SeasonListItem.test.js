@@ -52,3 +52,37 @@ test("Should display a season that has ended", () => {
   render(<SeasonListItem season={season} today={today} />);
   checkInfo(season, "Season ended");
 });
+
+test.skip("should toggle show/hide when clicked", () => {
+  let today = new Date(2020, 5, 7);
+  render(<SeasonListItem season={season} today={today} />);
+  expect(screen.getByTestId("detail-box")).not.toBeVisible();
+  fireEvent.click(screen.getByTestId("title-box"));
+  expect(screen.getByTestId("detail-box")).toBeVisible();
+  fireEvent.click(screen.getByTestId("title-box"));
+  expect(screen.getByTestId("detail-box")).not.toBeVisible();
+});
+
+test("should display end register button when register open", () => {
+  let today = new Date(2020, 8, 5, 9, 0, 0);
+  render(<SeasonListItem season={season} today={today} />);
+  expect(screen.queryByText("Edit")).toBeInTheDocument();
+  expect(screen.queryByText("End register")).toBeInTheDocument();
+  expect(screen.queryByText("End season")).not.toBeInTheDocument();
+});
+
+test("should display end season before season ends", () => {
+  let today = new Date(2020, 8, 13);
+  render(<SeasonListItem season={season} today={today} />);
+  expect(screen.queryByText("Edit")).toBeInTheDocument();
+  expect(screen.queryByText("End register")).not.toBeInTheDocument();
+  expect(screen.queryByText("End season")).toBeInTheDocument();
+});
+
+test("should not display any button after a season ended", () => {
+  let today = new Date(2021, 8, 13);
+  render(<SeasonListItem season={season} today={today} />);
+  expect(screen.queryByText("Edit")).not.toBeInTheDocument();
+  expect(screen.queryByText("End register")).not.toBeInTheDocument();
+  expect(screen.queryByText("End season")).not.toBeInTheDocument();
+});

@@ -22,3 +22,21 @@ test("Should render", () => {
   fireEvent.click(screen.queryByTestId("approve"));
   expect(onChange).toBeCalledTimes(1);
 });
+
+test.skip("Should show caption when hovered over", () => {
+  render(
+    <IconOption
+      icon={faCheckCircle}
+      selectName="1234"
+      optionName="approve"
+      optionLabel="Approve"
+      onChange={onChange}
+      testid="approve"
+    />
+  );
+  expect(screen.getByText("Approve")).not.toBeVisible();
+  fireEvent.mouseOver(screen.getByTestId("approve"));
+  expect(screen.getByText("Approve")).toBeVisible();
+  fireEvent.mouseLeave(screen.getByTestId("approve"));
+  expect(screen.getByText("Approve")).not.toBeVisible();
+});

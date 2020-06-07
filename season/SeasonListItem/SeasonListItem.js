@@ -6,6 +6,16 @@ import { datesToMsg, timesToMsg } from "../SeasonDisplay/SeasonDisplay";
 import "./SeasonListItem.css";
 
 export default function SeasonListItem(props) {
+  const statusTexts = [
+    "Loading",
+    "Not open yet",
+    "Register open",
+    "Register closed",
+    "Season started",
+    "Season ended",
+    "Error",
+  ];
+
   let today = moment(props.today);
   let registerStartTime = moment(props.season.registerStartTime);
   let registerEndTime = moment(props.season.registerEndTime);
@@ -21,13 +31,15 @@ export default function SeasonListItem(props) {
     today.isAfter(seasonStartDate) && today.isBefore(seasonEndDate);
   let seasonEnded = today.isAfter(seasonEndDate);
 
-  let status = "Loading";
-  if (notOpen) status = "Not open yet";
-  else if (registerOpen) status = "Register open";
-  else if (registerClosed) status = "Register closed";
-  else if (seasonStarted) status = "Season started";
-  else if (seasonEnded) status = "Season ended";
-  else status = "Error";
+  let statusId = 0;
+  if (notOpen) statusId = 1;
+  else if (registerOpen) statusId = 2;
+  else if (registerClosed) statusId = 3;
+  else if (seasonStarted) statusId = 4;
+  else if (seasonEnded) statusId = 5;
+  else statusId = 6;
+
+  let status = statusTexts[statusId];
 
   let registerTimes = timesToMsg(
     props.season.registerStartTime,
@@ -66,9 +78,11 @@ export default function SeasonListItem(props) {
           </span>
         </div>
         <div className="detail-item button-box">
-          <button className="normal">Edit</button>
-          <button className="danger">End register</button>
-          <button className="danger">End season</button>
+          {statusId < 5 && <button className="normal">Edit</button>}
+          {statusId === 2 && <button className="danger">End register</button>}
+          {[1, 3, 4].indexOf(statusId) > 0 && (
+            <button className="danger">End season</button>
+          )}
         </div>
       </div>
     </div>
