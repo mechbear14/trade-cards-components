@@ -3,7 +3,6 @@ import {
   faCheckCircle,
   faQuestionCircle,
   faExclamationCircle,
-  faArrowAltCircleRight,
 } from "@fortawesome/free-solid-svg-icons";
 import Connection from "../Connection/Connection";
 import IconOption from "../../input/IconOption/IconOption";
@@ -46,14 +45,6 @@ export default function ConnectionJudge(props) {
           optionLabel="Inappropriate response"
           onChange={props.onChange}
           testid="inappropriate"
-        />
-        <IconOption
-          icon={faArrowAltCircleRight}
-          selectName={props.connection.id}
-          optionName="merge"
-          optionLabel="Merge connection"
-          onChange={props.onChange}
-          testid="merge"
         />
       </div>
     </div>

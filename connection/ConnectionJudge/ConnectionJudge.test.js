@@ -48,6 +48,13 @@ test("Should display cards", () => {
   expect(screen.queryByText("Chatrooms")).not.toBeNull();
 });
 
+test("should call function when selected", () => {
+  let connection = connections[0];
+  render(<ConnectionJudge connection={connection} onChange={onChange} />);
+  fireEvent.click(screen.queryByTestId("approve"));
+  expect(connection.status).toEqual("approve");
+});
+
 test("Should allow only one choice at once", () => {
   let connection = connections[0];
   render(<ConnectionJudge connection={connection} onChange={onChange} />);
@@ -59,6 +66,4 @@ test("Should allow only one choice at once", () => {
   expect(
     screen.queryByTestId("inappropriate-radio").attributes.checked
   ).toBeFalsy();
-  expect(screen.queryByTestId("merge-radio").attributes.checked).toBeFalsy();
-  expect(connection.status).toEqual("inappropriate");
 });
