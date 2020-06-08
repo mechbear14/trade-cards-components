@@ -1,42 +1,19 @@
 import React from "react";
-import "./InputCard.css";
 
-class CardInput extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      text: "",
-    };
-  }
+import "./CardInput.css";
 
-  onChange = (e) => {
-    let textContent = e.target.textContent;
-    if (textContent.length > 30) {
-      e.target.textContent = this.state.text;
-    } else {
-      this.setState({
-        text: textContent,
-      });
-      if (this.props.getText) {
-        this.props.getText(textContent);
-      }
-    }
-  };
-
-  render() {
-    return (
+export default function CardInput(props) {
+  return (
+    <div className="card-input">
       <label htmlFor="card-text">
-        <div className={`card ${this.props.kind}`}>
-          <span
-            className="response"
-            contentEditable
-            onInput={this.onChange}
-            id="card-text"
-          ></span>
-        </div>
+        <div
+          className={`card ${props.card.kind}`}
+          onInput={props.onChange}
+          contentEditable
+          placeholder="Card text"
+          id="card-text"
+        ></div>
       </label>
-    );
-  }
+    </div>
+  );
 }
-
-export default CardInput;
