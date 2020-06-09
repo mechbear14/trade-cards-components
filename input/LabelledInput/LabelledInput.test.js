@@ -34,7 +34,7 @@ test("should display an existing value", () => {
   expect(screen.getByText("Word").classList).toContain("filled");
 });
 
-test.skip("should change appearance when typing", () => {
+test("should change appearance when typing", () => {
   render(
     <LabelledInput
       type="text"

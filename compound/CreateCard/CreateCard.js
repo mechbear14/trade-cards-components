@@ -6,6 +6,8 @@ import ErrorBox from "../../decorations/ErrorBox/ErrorBox";
 import Choice from "../../input/Choice/Choice";
 import CardInput from "../../input/CardInput/CardInput";
 
+// TODO: Make this component completely controlled. Make onSelect, onChange props
+
 export default function CreateCard(props) {
   const [kind, setKind] = useState("blue");
   const [text, setText] = useState("");
