@@ -10,10 +10,7 @@
   text-align: center;
   padding: 0.5rem;
   text-decoration: none;
-}
-
-.card.with-link:hover {
-  cursor: pointer;
+  word-break: break-word;
 }
 
 .card.small {
@@ -41,5 +38,10 @@
 
 .card.blue {
   background-color: rgb(2, 65, 212);
+  color: var(--primary-text);
+}
+
+.card.unknown {
+  background-color: rgba(0, 0, 0, 0.5);
   color: var(--primary-text);
 }

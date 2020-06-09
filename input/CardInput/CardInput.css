@@ -1,10 +1,6 @@
 @import "../../card/Card/Card.css";
 
-.card {
-  word-break: break-word;
-}
-
-.card:hover {
+.card-input .card:hover {
   cursor: pointer;
 }
 

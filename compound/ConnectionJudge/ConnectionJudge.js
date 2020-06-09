@@ -4,7 +4,7 @@ import {
   faQuestionCircle,
   faExclamationCircle,
 } from "@fortawesome/free-solid-svg-icons";
-import Connection from "../Connection/Connection";
+import Connection from "../../connection/Connection/Connection";
 import IconOption from "../../input/IconOption/IconOption";
 
 import "./ConnectionJudge.css";
