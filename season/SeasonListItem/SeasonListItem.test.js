@@ -53,14 +53,14 @@ test("Should display a season that has ended", () => {
   checkInfo(season, "Season ended");
 });
 
-test.skip("should toggle show/hide when clicked", () => {
+test("should toggle show/hide when clicked", () => {
   let today = new Date(2020, 5, 7);
   render(<SeasonListItem season={season} today={today} />);
-  expect(screen.getByTestId("detail-box")).not.toBeVisible();
+  expect(screen.getByTestId("detail-box")).toHaveClass("hide");
   fireEvent.click(screen.getByTestId("title-box"));
-  expect(screen.getByTestId("detail-box")).toBeVisible();
+  expect(screen.getByTestId("detail-box")).not.toHaveClass("hide");
   fireEvent.click(screen.getByTestId("title-box"));
-  expect(screen.getByTestId("detail-box")).not.toBeVisible();
+  expect(screen.getByTestId("detail-box")).toHaveClass("hide");
 });
 
 test("should display end register button when register open", () => {

@@ -26,22 +26,26 @@
   padding: 0.5rem;
 }
 
-.card.red {
+.card.red,
+.card.red textarea {
   background-color: var(--secondary);
   color: var(--primary-text);
 }
 
-.card.white {
+.card.white,
+.card.white textarea {
   background-color: var(--primary-text);
   color: var(--secondary);
 }
 
-.card.blue {
+.card.blue,
+.card.blue textarea {
   background-color: rgb(2, 65, 212);
   color: var(--primary-text);
 }
 
-.card.unknown {
+.card.unknown,
+.card.unknown textarea {
   background-color: rgba(0, 0, 0, 0.5);
   color: var(--primary-text);
 }

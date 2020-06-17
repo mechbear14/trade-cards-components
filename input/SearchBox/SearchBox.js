@@ -12,11 +12,16 @@ import "./SearchBox.css";
 
 export default function SearchBox(props) {
   const [barClass, setBarClass] = useState("top-bar");
-  let onFocus = () => {
+  const onFocus = () => {
     setBarClass("top-bar typing");
   };
-  let onBlur = () => {
+  const onBlur = () => {
     setBarClass("top-bar");
+  };
+  const onSearch = () => {
+    if (props.value) {
+      props.onSearch();
+    }
   };
   return (
     <div className="search-box">
@@ -27,11 +32,15 @@ export default function SearchBox(props) {
         onChange={props.onChange}
         onFocus={onFocus}
         onBlur={onBlur}
-        data-testid="input"
+        data-testid="search-box"
       />
       <div className="bottom-bar"></div>
-      <div className={barClass} data-testid="bar"></div>
-      <div className="search-button">
+      <div className={barClass} data-testid="search-bar"></div>
+      <div
+        className="search-button"
+        data-testid="search-button"
+        onClick={onSearch}
+      >
         <FontAwesomeIcon icon={faSearch} />
       </div>
     </div>

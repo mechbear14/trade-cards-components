@@ -1,19 +1,31 @@
 @import "../../card/Card/Card.css";
 
+.card-input {
+  position: relative;
+}
+
+.card-input .card {
+  overflow: hidden;
+}
+
 .card-input .card:hover {
   cursor: pointer;
 }
 
-.card-input #card-text:empty {
-  line-height: 420%;
+.card-input #card-text {
+  background-color: transparent;
+  resize: none;
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+  height: 100%;
+  overflow: hidden;
 }
 
-.card-input #card-text:empty::before {
-  content: attr(placeholder);
-  color: rgba(255, 255, 255, 0.5);
-}
-
-.card-input .white#card-text:empty::before {
-  content: attr(placeholder);
-  color: rgba(200, 0, 0, 0.5);
+.card-input .hidden {
+  position: absolute;
+  top: 0;
+  left: 0;
+  font-size: 1.5rem;
+  z-index: -1;
 }

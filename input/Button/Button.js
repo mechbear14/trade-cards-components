@@ -2,6 +2,8 @@ import React from "react";
 
 import "./Button.css";
 
+import Spinner from "../../decorations/Spinner/Spinner";
+
 export default function Button(props) {
   return (
     <div className="button">
@@ -10,6 +12,7 @@ export default function Button(props) {
         disabled={props.disabled}
         data-testid="button"
       >
+        {props.loading && <Spinner />}
         {props.text}
       </button>
     </div>

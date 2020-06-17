@@ -17,7 +17,7 @@ export default function Choice(props) {
           <input
             type="radio"
             name={props.name}
-            value={choice.value}
+            value={choice.name}
             id={choice.name}
             onChange={props.onSelect}
             defaultChecked={index === 0}

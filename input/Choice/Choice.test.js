@@ -23,7 +23,7 @@ let currentPage = "season";
 
 const onChange = (e) => {
   if (e.target.checked) {
-    currentPage = e.target.id;
+    currentPage = e.target.value;
   }
 };
 

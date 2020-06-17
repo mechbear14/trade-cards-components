@@ -18,4 +18,7 @@ test("Should click", () => {
   expect(onClick).toHaveBeenCalledTimes(3);
 });
 
-test.todo("Should show spinner when needed");
+test("Should show spinner when needed", () => {
+  render(<Button text="Roar" loading={true} />);
+  expect(screen.getByTestId("spinner")).toBeInTheDocument();
+});

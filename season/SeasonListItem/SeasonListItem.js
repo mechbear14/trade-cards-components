@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import moment from "moment";
 
 import { datesToMsg, timesToMsg } from "../SeasonDisplay/SeasonDisplay";
@@ -51,9 +51,22 @@ export default function SeasonListItem(props) {
     props.season.seasonEndDate
   );
 
+  const [detailBoxClass, setDetailBoxClass] = useState("detail-box hide");
+  const toggleShowHide = () => {
+    if (detailBoxClass === "detail-box") {
+      setDetailBoxClass("detail-box hide");
+    } else {
+      setDetailBoxClass("detail-box");
+    }
+  };
+
   return (
     <div className="season-list-item">
-      <div className="title-box" data-testid="title-box">
+      <div
+        className="title-box"
+        data-testid="title-box"
+        onClick={toggleShowHide}
+      >
         <span className="label" data-testid="label">
           {props.season.label}
         </span>
@@ -64,7 +77,7 @@ export default function SeasonListItem(props) {
           {status}
         </span>
       </div>
-      <div className="detail-box hide" data-testid="detail-box">
+      <div className={detailBoxClass} data-testid="detail-box">
         <div className="detail-item">
           <span>Date: </span>
           <span className="dates" data-testid="dates">
