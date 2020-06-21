@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import "./LabelledInput.css";
 
@@ -16,12 +16,12 @@ export default function LabelledInput(props) {
     props.value && props.value.length && props.value.length > 0
       ? "filled"
       : "empty";
-  let barClass = "top-bar";
-  let onFocus = () => {
-    barClass = "top-bar typing";
+  const [barClass, setBarClass] = useState("top-bar");
+  const onFocus = () => {
+    setBarClass("top-bar typing");
   };
-  let onBlur = () => {
-    barClass = "top-bar";
+  const onBlur = () => {
+    setBarClass("top-bar");
   };
   return (
     <div className="input">

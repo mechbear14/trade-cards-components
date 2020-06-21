@@ -21,6 +21,7 @@ export default function CardSelect(props) {
           id={props.propName}
           onChange={props.onChange}
           data-testid="checkbox"
+          checked={props.selected}
         />
         <div className="card-cover">
           <FontAwesomeIcon className="icon" icon={faCheckCircle} />
