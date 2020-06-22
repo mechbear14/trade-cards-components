@@ -13,7 +13,12 @@ export default function CreateCard(props) {
   ];
   return (
     <div className="create-card">
-      <Choice choices={cardKinds} onSelect={props.onSelectKind} name="kind" />
+      <Choice
+        choices={cardKinds}
+        onSelect={props.onSelectKind}
+        selected={props.card.kind}
+        name="kind"
+      />
       <div className="blank"></div>
       <CardInput
         propName="text"

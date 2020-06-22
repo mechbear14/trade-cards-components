@@ -11,7 +11,15 @@ test("Should render", () => {
   };
   const onChange = jest.fn();
   render(<CreateCard card={newCard} onChangeText={onChange} />);
+  expect(screen.getByLabelText("Blue")).toBeChecked();
   expect(screen.getByText("Shredder")).toBeInTheDocument();
+});
+
+test("should render existing card", () => {
+  const card = { kind: "red", text: "WebSocket" };
+  render(<CreateCard card={card} />);
+  expect(screen.getByLabelText("Red")).toBeChecked();
+  expect(screen.getByText("WebSocket")).toBeInTheDocument();
 });
 
 test("Should update card", () => {
