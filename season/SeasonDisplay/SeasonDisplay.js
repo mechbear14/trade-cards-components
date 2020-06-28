@@ -9,8 +9,15 @@ export function datesToMsg(startDate, endDate) {
   )}`.toUpperCase();
 }
 
+/**
+ * BUG: Not calculating sameDay correctly
+ * @param {*} startTime
+ * @param {*} endTime
+ */
 export function timesToMsg(startTime, endTime) {
-  let sameDay = moment(startTime).day() === moment(endTime).day();
+  let sameDay =
+    moment(startTime).dayOfYear() === moment(endTime).dayOfYear() &&
+    moment(startTime).year() === moment(endTime).year();
   if (sameDay) {
     return `${moment(startTime).format("HHmm")}-${moment(endTime).format(
       "HHmm"

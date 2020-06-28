@@ -60,6 +60,11 @@
   font-size: 1.2rem;
   font-weight: bold;
   border-radius: 1rem;
+  margin-right: 0.5rem;
+}
+
+.season-list-item .detail-box .detail-item.button-box button:hover {
+  cursor: pointer;
 }
 
 .season-list-item .detail-box .detail-item.button-box button.normal {

@@ -12,11 +12,12 @@ import "./LabelledInput.css";
  */
 
 export default function LabelledInput(props) {
+  const [barClass, setBarClass] = useState("top-bar");
   let labelClass =
-    props.value && props.value.length && props.value.length > 0
+    barClass.split(" ").find((className) => className === "typing") ||
+    (props.value && props.value.length && props.value.length > 0)
       ? "filled"
       : "empty";
-  const [barClass, setBarClass] = useState("top-bar");
   const onFocus = () => {
     setBarClass("top-bar typing");
   };

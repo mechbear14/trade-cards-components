@@ -5,6 +5,10 @@ import { datesToMsg, timesToMsg } from "../SeasonDisplay/SeasonDisplay";
 
 import "./SeasonListItem.css";
 
+/**
+ * TODO: Add "Publish" option
+ */
+
 export default function SeasonListItem(props) {
   const statusTexts = [
     "Loading",
@@ -85,16 +89,24 @@ export default function SeasonListItem(props) {
           </span>
         </div>
         <div className="detail-item">
-          <span>Register open:</span>
+          <span>Register open: </span>
           <span className="register-times" data-testid="register-times">
             {registerTimes}
           </span>
         </div>
         <div className="detail-item button-box">
-          {statusId < 5 && <button className="normal">Edit</button>}
-          {statusId === 2 && <button className="danger">End register</button>}
-          {[1, 3, 4].indexOf(statusId) > 0 && (
+          {statusId < 2 && <button className="normal">Edit</button>}
+          {statusId < 2 && !props.published && (
+            <button className="normal">Publish</button>
+          )}
+          {statusId === 2 && props.published && (
+            <button className="danger">End register</button>
+          )}
+          {statusId === 4 && props.published && (
             <button className="danger">End season</button>
+          )}
+          {statusId < 4 && props.published && (
+            <button className="danger">Delete season</button>
           )}
         </div>
       </div>
